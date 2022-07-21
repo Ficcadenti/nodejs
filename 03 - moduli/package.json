@@ -1,0 +1,24 @@
+{
+  "name": "moduli",
+  "version": "1.0.0",
+  "description": "node modules esempio",
+  "main": "index.js",
+  "dependencies": {
+    "expressjs": "^1.0.1",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "npm"
+  ],
+  "author": "",
+  "license": "ISC"
+}
