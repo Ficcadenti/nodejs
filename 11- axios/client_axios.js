@@ -37,5 +37,6 @@ btn.addEventListener("click", function () {
     })
     .catch((err) => {
       console.log(err);
+      alert(err.response.data.toString());
     });
 });

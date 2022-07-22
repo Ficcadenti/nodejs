@@ -51,7 +51,7 @@ http
           .catch((err) => {
             console.log(err);
             resp.writeHead(httpConstants.HTTP_STATUS_INTERNAL_SERVER_ERROR);
-            resp.end();
+            resp.end(err.response.data.message);
           });
         break;
 
