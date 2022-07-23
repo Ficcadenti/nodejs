@@ -19,7 +19,7 @@ btn.addEventListener("click", function () {
 
   console.log(`city=${city_p}`);
   console.log(`zip=${zip_p}`);
-  let serverUrl = WEATHER_SERVER;
+  let serverUrl = WEATHER_SERVER + "get-weather";
   if (city_p) {
     serverUrl += "/" + city_p;
   } else {
@@ -44,4 +44,17 @@ btn.addEventListener("click", function () {
       console.log(err);
       alert(err.response.data.toString());
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  axios.get(WEATHER_SERVER + "get-countries").then((result) => {
+    const countryList = document.getElementById("country_code");
+    const countries = result.data;
+    countries.forEach((c) => {
+      const option = new Option();
+      option.value = c.code;
+      option.text = c.name;
+      countryList.appendChild(option);
+    });
+  });
 });

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const { getWeather } = require("./funzioni.js");
+const { getData } = require("country-list");
 
 console.log(express);
 
@@ -29,4 +30,8 @@ app.get("/get-weather/:city([a-zA-Z]+)", async (req, resp) => {
   } catch (err) {
     resp.status(500).send(err.message);
   }
+});
+
+app.get("/get-countries", (req, resp) => {
+  resp.json(getData());
 });
