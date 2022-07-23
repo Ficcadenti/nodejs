@@ -29,7 +29,7 @@ try {
 
         break;
       case httpConstants.HTTP_STATUS_UNAUTHORIZED:
-        console.log("pPlease verify your appid !!!");
+        console.log("Please verify your appid !!!");
         break;
       case httpConstants.HTTP_STATUS_NOT_FOUND:
         console.log("City not found !!!");
