@@ -11,7 +11,7 @@ const temp_min = document.getElementById("temp-min");
 const temp_max = document.getElementById("temp-max");
 
 console.log(`WEATHER_SERVER=${WEATHER_SERVER}`);
-
+console.log(navigator.language);
 btn.addEventListener("click", function () {
   const city_p = city.value.trim();
   const zip_p = zip.value.trim();
