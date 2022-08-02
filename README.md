@@ -2,7 +2,7 @@
 <strong>Repository per lezioni sul corso NodeJs</strong>
 <br>
 <strong>(c) 08/2022 - Raffaele Ficcadenti (<a href="mailto:raffaele.ficcadenti@gmail.com">raffaele.ficcadenti@gmail.com</a>) </strong>
-<br>
+<br><br><br>
 <strong> Di seguito alcuni link interessanti, direi indispensabili...</strong>
 <ul>
 	<li><b>Event loop</b>: http://latentflip.com/loupe/</li>
