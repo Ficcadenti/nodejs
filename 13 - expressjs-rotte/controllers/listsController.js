@@ -30,10 +30,10 @@ function addList({ name }) {
 }
 
 function updateList(id, newList) {
-  const oldList = getListById(id);
-  if (oldList) {
+  const idx = data.lists.findIndex((list) => list.id === +id);
+  if (idx != -1) {
     const idx = data.lists.findIndex((list) => list.id === +id);
-    data.lists[idx] = { ...oldList, ...newList };
+    data.lists[idx] = { ...data.lists[idx], ...newList };
     return data.lists[idx];
   }
   return false;
