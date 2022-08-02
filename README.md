@@ -1,6 +1,9 @@
-
+# corso-nodejs
+<strong>Repository per lezioni sul corso NodeJs</strong>
+<br>
+<strong>(c) 08/2022 - Raffaele Ficcadenti (<a href="mailto:raffaele.ficcadenti@gmail.com">raffaele.ficcadenti@gmail.com</a>) </strong>
+<br>
 <strong> Di seguito alcuni link interessanti, direi indispensabili...</strong>
-
 <ul>
 	<li><b>Event loop</b>: http://latentflip.com/loupe/</li>
 	<li><b>Js live</b>: https://jsbin.com/cegisuyivu/edit?js,console</li>
@@ -10,6 +13,7 @@
 </ul>
 
 <strong> Per testare le promise su servizi rest on-line. </strong>
+<ul>
+	<li><b>API per meteo</b>: https://openweathermap.org/</li>
+</ul>
 
-####### API per meteo
-https://openweathermap.org/
