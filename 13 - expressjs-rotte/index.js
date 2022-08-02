@@ -1,6 +1,6 @@
 const express = require("express");
 const { router: todosRouters } = require("./routes/todos.js");
-
+const { router: listsRouters } = require("./routes/lists.js");
 const app = express();
 
 // app.all("*", (req, resp, next) => {
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/todos", todosRouters);
+app.use("/lists", listsRouters);
 app.listen(4000, () => {
   console.log("Listening on port 4000");
 });
