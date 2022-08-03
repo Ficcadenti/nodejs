@@ -1,42 +1,47 @@
 const data = require("../data.json");
+const pool = require("../db");
 
-function getTodos() {
-  return data.todos;
+async function getTodos() {
+  const [result] = await pool.query("SELECT * FROM todos");
+  return result;
 }
 
-function getTodoById(id) {
-  return data.todos.find((todo) => todo.id === +id);
+async function getTodosByListId(list_id) {
+  const [result] = await pool.query("SELECT * FROM todos WHERE list_id= ?", [
+    list_id,
+  ]);
+  return result[0];
 }
 
-function deleteTodo(id) {
-  const idx = data.todos.findIndex((todo) => todo.id === +id);
-  if (idx > -1) {
-    const ele = data.todos.splice(idx, 1);
-    return ele;
-  }
-  return 0;
+async function getTodoById(id) {
+  const [result] = await pool.query("SELECT * FROM todos WHERE id= ?", [id]);
+  return result[0];
 }
 
-function addTodo({ todo, completed, list }) {
-  const ids = data.todos.map((object) => {
-    return object.id;
-  });
-
-  console.log(ids);
-  let max = Math.max(...ids);
-  console.log(`New id: ${max + 1}`);
-  const newTodo = { todo, completed, list, id: ++max };
-  data.todos.unshift(newTodo);
-  return newTodo;
+async function deleteTodo(id) {
+  const [result] = await pool.query("DELETE FROM todos WHERE id= ?", [id]);
+  return result.affectedRows;
 }
 
-function updateTodo(id, newTodo) {
-  const idx = data.todos.findIndex((todo) => todo.id === +id);
-  if (idx != -1) {
-    data.todos[idx] = { ...data.todos[idx], ...newTodo };
-    return data.todos[idx];
-  }
-  return false;
+async function addTodo({ todo, completed, list_id }) {
+  const created_at = new Date();
+  const [result] = await pool.query(
+    "INSERT INTO todos (todo,completed,list_id,created_at) values (?,?,?,?)",
+    [todo, completed, list_id, created_at]
+  );
+  console.log(result);
+  const todoAdd = await getTodoById(result.insertId);
+  return todoAdd;
+}
+
+async function updateTodo(id, newTodo) {
+  const updated_at = new Date();
+  const [result] = await pool.query(
+    "UPDATE todos SET todo=?, completed=?, list_id=?, updated_at=? WHERE id=?",
+    [newTodo.todo, newTodo.completed, newTodo.list_id, updated_at, id]
+  );
+  const todo = await getTodoById(id);
+  return todo;
 }
 
 module.exports = {
@@ -45,4 +50,5 @@ module.exports = {
   deleteTodo,
   addTodo,
   updateTodo,
+  getTodosByListId,
 };

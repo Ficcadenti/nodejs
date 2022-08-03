@@ -17,3 +17,29 @@
 	<li><b>API per meteo</b>: https://openweathermap.org/</li>
 </ul>
 
+<strong> Sequqlize </strong>
+<ul>
+	<li><b>Sequqlize</b>: https://sequelize.org/</li>
+	<li><b>Sequqlize-cli</b>: https://www.npmjs.com/package/sequelize-cli</li>
+	
+</ul>
+
+sequelize-cli init        -> Inizializzazione del progetto
+sequelize-cli model:generate --name user --attributes id:bigint,name:string,email:string,password:string -> Crea un model ed il file di migrazione
+sequelize-cli db:migrate  -> Creazione tabelle a partire dal file di migrazione
+sequelize-cli seed:generate --name insert-users -> Crea il file per insert mokkate
+sequelize-cli db:seed:all -> Inserisce dati di esempio
+sequelize-cli db:seed:undo:all -> Elimina dati di esempio
+
+<strong> Moduli npm interessanti </strong>
+<ul>
+	<li><b>axios</b></li>
+	<li><b>bcrypt</b></li>
+	<li><b>country-list</b></li>
+	<li><b>express</b></li>
+	<li><b>expressjs</b></li>
+	<li><b>mysql2</b></li>
+	<li><b>sequelize</b></li>
+	<li><b>faker</b>: https://fakerjs.dev/ , https://github.com/faker-js/faker</li>
+</ul>
+
