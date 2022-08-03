@@ -24,12 +24,14 @@
 	
 </ul>
 
+<p>
 sequelize-cli init        -> Inizializzazione del progetto
 sequelize-cli model:generate --name user --attributes id:bigint,name:string,email:string,password:string -> Crea un model ed il file di migrazione
 sequelize-cli db:migrate  -> Creazione tabelle a partire dal file di migrazione
 sequelize-cli seed:generate --name insert-users -> Crea il file per insert mokkate
 sequelize-cli db:seed:all -> Inserisce dati di esempio
 sequelize-cli db:seed:undo:all -> Elimina dati di esempio
+</p>
 
 <strong> Moduli npm interessanti </strong>
 <ul>
