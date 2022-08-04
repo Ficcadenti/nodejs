@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       List.belongsTo(models.User, { foreignKey: "userId" });
+      List.hasMany(models.Todo);
     }
   }
 

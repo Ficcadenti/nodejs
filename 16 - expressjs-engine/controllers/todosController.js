@@ -1,7 +1,9 @@
 const data = require("../data.json");
 const pool = require("../db");
 const Todo = require("../models").Todo;
-const attributes = ["id", "todo", "list_id", "created_at", "updated_at"];
+const attributes = {
+  include: ["id", "todo", "list_id", "created_at", "updated_at"],
+};
 
 async function getTodos() {
   const result = Todo.findAll({

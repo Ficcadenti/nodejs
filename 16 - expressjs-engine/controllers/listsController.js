@@ -1,12 +1,22 @@
 const data = require("../data.json");
 const List = require("../models").List;
+const Todo = require("../models").Todo;
 
+const attributes_count = {
+  include: [
+    [List.sequelize.fn("COUNT", List.sequelize.col("Todos.id")), "total"],
+  ],
+  exclude: ["userId", "user_id", "UserId", "createdAt", "updatedAt"],
+};
 const attributes = ["id", "name", "user_id", "created_at", "updated_at"];
 
 async function getLists() {
   const result = await List.findAll({
-    attributes: attributes,
+    attributes: attributes_count,
+    subQuery: false,
     limit: 20,
+    include: [{ model: Todo, attributes: [] }],
+    group: ["List.id"],
   });
   return result;
 }

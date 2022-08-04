@@ -10,6 +10,10 @@
 	<li><b>lodash</b>: https://lodash.com/</li>
 	<li><b>NPM</b>: https://www.npmjs.com/</li>
 	<li><b>Installazione NVM</b>: https://github.com/coreybutler/nvm-windows/releases</li>
+	<li><b>Bootstrap</b>: https://getbootstrap.com//</li>
+	<li><b>Font Awesome</b>: https://fontawesome.com/</li>
+
+	
 </ul>
 
 <strong> Per testare le promise su servizi rest on-line. </strong>
@@ -48,6 +52,7 @@ sequelize-cli db:seed:undo:all -> Elimina dati di esempio
 	<li><b>expressjs</b></li>
 	<li><b>mysql2</b></li>
 	<li><b>sequelize</b></li>
+	<li><b>method-override</b></li>
 	<li><b>faker</b>: https://fakerjs.dev/ , https://github.com/faker-js/faker</li>
 </ul>
 

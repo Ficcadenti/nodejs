@@ -12,7 +12,7 @@ const { getTodosByListId } = require("../../controllers/todosController");
 const router = express.Router();
 const logger = (req, resp, next) => {
   console.log(
-    "LISTS: Chiamata al server con params: " + JSON.stringify(req.params)
+    "API/LISTS: Chiamata al server con params: " + JSON.stringify(req.params)
   );
   next();
 };
@@ -38,7 +38,6 @@ router.get("/:id([0-9]+)", logger, async (req, res) => {
 router.get("/:list_id([0-9]+)/todos", logger, async (req, res) => {
   try {
     const list = await getTodosByListId(req.params.list_id);
-    console.log(list);
     res.status(list ? 200 : 404).json(list ? list : null);
   } catch (e) {
     res.status(500).send(e.toString());
@@ -48,7 +47,6 @@ router.get("/:list_id([0-9]+)/todos", logger, async (req, res) => {
 router.delete("/:id([0-9]+)", logger, async (req, res) => {
   try {
     const deleted = await deleteList(req.params.id);
-    console.log(deleted);
     res.status(deleted ? 200 : 404).json(deleted ? deleted : null);
   } catch (e) {
     res.status(500).send(e.toString());
