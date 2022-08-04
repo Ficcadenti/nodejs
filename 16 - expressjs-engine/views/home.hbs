@@ -1,0 +1,10 @@
+<h1>Example App: Home</h1>
+<ul>
+    {{#each lists}}
+        <li>
+            <a href="/lists/{{this.id}}/todos">
+                {{this.name}}
+            </a>
+        </li>
+    {{/each}}
+</ul>
