@@ -2,16 +2,48 @@ const express = require("express");
 const { router: todosRouters } = require("./routes/api/todos.js");
 const { router: listsRouters } = require("./routes/api/lists.js");
 const { router: lists } = require("./routes/lists.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const ehb = require("express-handlebars");
 var methodOverride = require("method-override");
 
 const app = express();
 
+//Congigure session
+const MAX_AGE = process.env.MAX_AGE || 60 * 60 * 1000;
+const SECRET = process.env.SECRET || "Our beautiful secret";
+const DEFAULT_ENV = process.env.DEFAULT_ENV || "development";
+
+app.use(
+  session({
+    cookie: {
+      maxAge: MAX_AGE,
+      secure: DEFAULT_ENV === "production",
+    },
+
+    secret: SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(flash());
+app.use((req, resp, next) => {
+  req.session.user_id = 1;
+  next();
+});
 // C R U D
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname + "/node_modules/bootstrap/dist"));
+app.use(
+  "/bootsrtap",
+  express.static(__dirname + "/node_modules/bootstrap/dist")
+);
+app.use(
+  "/sweetalert2",
+  express.static(__dirname + "/node_modules/sweetalert2/dist")
+);
+app.use(express.static(__dirname + "/public"));
 
 app.engine(".hbs", ehb({ extname: ".hbs" }));
 app.set("view engine", ".hbs");

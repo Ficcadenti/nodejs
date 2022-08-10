@@ -50,9 +50,15 @@ sequelize-cli db:seed:undo:all -> Elimina dati di esempio
 	<li><b>country-list</b></li>
 	<li><b>express</b></li>
 	<li><b>expressjs</b></li>
+	<li><b>express-session</b></li>
 	<li><b>mysql2</b></li>
 	<li><b>sequelize</b></li>
 	<li><b>method-override</b></li>
 	<li><b>faker</b>: https://fakerjs.dev/ , https://github.com/faker-js/faker</li>
+	<li><b>connect-flash</b></li>
+	<li><b>sweetalert2</b>: https://sweetalert2.github.io/</li>
+
+	
+	
 </ul>
 

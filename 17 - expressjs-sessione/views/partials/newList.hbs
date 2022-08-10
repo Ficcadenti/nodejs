@@ -6,11 +6,10 @@
         form.submit();
     }
 </script>
-<h2>INSERT NEW LIST</h2>
 <form method="post" action="/lists" name="list_name"  id="list">
     <div class="row">
         <div class="col-md-9 form-group">
-            <input required class="form-control" name="list_name" value="{{name}}">
+            <input placeholder="INSERT NEW LIST" class="form-control" name="list_name" value="{{name}}">
         </div>
         <div class="col-md-3">
             <button value="SAVE"  class="btn btn-success" title="INSERT LIST">

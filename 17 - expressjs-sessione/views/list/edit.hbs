@@ -1,11 +1,9 @@
-<script>
-    function updateList(btn) {
-        const method = document.getElementById('method');
-        const form = document.getElementById('list');
-        btn.value === 'DELETE' ? method.value = 'DELETE': method.value = 'PATCH';
-        form.submit();
-    }
-</script>
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{this}}</div>
+    {{/each}}
+{{/if}}
+
 <form method="post" action="/lists/{{this.id}}" name="list_name"  id="list">
     <div class="row">
         <div class="col-md-1 form-group">
@@ -27,3 +25,12 @@
         </div>
     </div>
 </form>
+
+<script>
+    function updateList(btn) {
+        const method = document.getElementById('method');
+        const form = document.getElementById('list');
+        btn.value === 'DELETE' ? method.value = 'DELETE': method.value = 'PATCH';
+        form.submit();
+    }
+</script>
