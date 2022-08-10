@@ -5,6 +5,8 @@ const {
   getLists,
   getListById,
   deleteList,
+  updateList,
+  addList,
 } = require("../controllers/listsController");
 const { getTodosByListId } = require("../controllers/todosController");
 const list = require("../models/list");
@@ -18,7 +20,8 @@ const logger = (req, resp, next) => {
 
 router.get("/", logger, async (req, res) => {
   try {
-    const result = await getLists();
+    const { q } = req.query;
+    const result = await getLists({ q });
     const names = result.map((object) => {
       return {
         name: object.name,
@@ -26,7 +29,15 @@ router.get("/", logger, async (req, res) => {
         total: object.dataValues.total,
       };
     });
-    res.render("home", { lists: names });
+    res.render("home", { lists: names, showBackButton: false, q });
+  } catch (e) {
+    res.status(500).send(e.toString());
+  }
+});
+
+router.get("/new", logger, async (req, res) => {
+  try {
+    res.render("list/newList", { showBackButton: true });
   } catch (e) {
     res.status(500).send(e.toString());
   }
@@ -68,6 +79,26 @@ router.delete("/:list_id([0-9]+)/", logger, async (req, res) => {
     //res.status(deleted ? 200 : 404).json(deleted ? deleted : null);
   } catch (e) {
     //res.status(500).send(e.toString());
+  }
+});
+
+router.patch("/:list_id([0-9]+)", async (req, resp) => {
+  try {
+    const updated = await updateList(req.params.list_id, req.body.list_name);
+    resp.redirect("/");
+    // resp.status(deleted ? 200 : 404).json(deleted ? deleted : null);
+  } catch (e) {
+    resp.status(500).send(e.toString());
+  }
+});
+
+router.post("/", async (req, resp) => {
+  try {
+    const updated = await addList(req.body.list_name);
+    resp.redirect("/");
+    // resp.status(deleted ? 200 : 404).json(deleted ? deleted : null);
+  } catch (e) {
+    resp.status(500).send(e.toString());
   }
 });
 

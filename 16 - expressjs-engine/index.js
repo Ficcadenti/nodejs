@@ -28,8 +28,8 @@ app.use(
   })
 );
 
-app.use("/api/todos", todosRouters);
-app.use("/api/lists", listsRouters);
+//app.use("/api/todos", todosRouters);
+//app.use("/api/lists", listsRouters);
 app.use(["/lists", "/"], lists);
 
 app.listen(4000, () => {

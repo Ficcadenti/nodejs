@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        validate: {
+          notEmpty: { msg: "Il campo non può essere vuoto" },
+          len: { args: [6, 255], msg: "Lunghezza tra 6 e 255" },
+        },
       },
       user_id: {
         type: DataTypes.INTEGER,

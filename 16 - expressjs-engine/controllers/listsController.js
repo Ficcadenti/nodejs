@@ -1,6 +1,7 @@
 const data = require("../data.json");
 const List = require("../models").List;
 const Todo = require("../models").Todo;
+const Op = require("../models").Sequelize.Op;
 
 const attributes_count = {
   include: [
@@ -10,13 +11,23 @@ const attributes_count = {
 };
 const attributes = ["id", "name", "user_id", "created_at", "updated_at"];
 
-async function getLists() {
+async function getLists(pars = {}) {
+  const where = pars.q
+    ? {
+        name: {
+          [Op.like]: "%" + pars.q + "%",
+        },
+      }
+    : {};
+
   const result = await List.findAll({
     attributes: attributes_count,
     subQuery: false,
     limit: 20,
     include: [{ model: Todo, attributes: [] }],
     group: ["List.id"],
+    order: [["createdAt", "DESC"]],
+    where: where,
   });
   return result;
 }
@@ -31,15 +42,14 @@ async function deleteList(id) {
   return result;
 }
 
-async function addList({ name }) {
+async function addList(name) {
   const result = await List.create({ user_id: 1, name });
   return result;
 }
 
-async function updateList(id, { name }) {
+async function updateList(id, name) {
   const result = await List.update({ name: name }, { where: { id } });
-  const list = await getListById(id);
-  return list;
+  return result;
 }
 module.exports = {
   getLists,
