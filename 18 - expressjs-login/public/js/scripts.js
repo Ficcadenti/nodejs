@@ -28,3 +28,7 @@ async function showConfirmMsg(title = "", msg = "", forname) {
     }
   }
 }
+
+function registerUser(f) {
+  Swal.fire("Welcome", f.name.value);
+}

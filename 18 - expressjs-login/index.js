@@ -2,6 +2,7 @@ const express = require("express");
 const { router: todosRouters } = require("./routes/api/todos.js");
 const { router: listsRouters } = require("./routes/api/lists.js");
 const { router: lists } = require("./routes/lists.js");
+const { router: auth } = require("./routes/auth.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 
@@ -60,8 +61,9 @@ app.use(
   })
 );
 
-//app.use("/api/todos", todosRouters);
-//app.use("/api/lists", listsRouters);
+app.use("/api/todos", todosRouters);
+app.use("/api/lists", listsRouters);
+app.use("/auth", auth);
 app.use(["/lists", "/"], lists);
 
 app.listen(4000, () => {

@@ -9,7 +9,6 @@ const {
   addList,
 } = require("../controllers/listsController");
 const { getTodosByListId } = require("../controllers/todosController");
-const list = require("../models/list");
 
 const logger = (req, resp, next) => {
   console.log(`LISTS: user_id=${req.session.user_id}`);
